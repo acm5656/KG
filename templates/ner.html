@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>主页</title>
+  <!-- Bootstrap core CSS-->
+  <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom fonts for this template-->
+  <link href="/static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- Custom styles for this template-->
+  <link href="/static/css/sb-admin.css" rel="stylesheet">
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="/index/">三国演义知识图谱</a>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link" href="/index/">
+            <i class="fa fa-fw fa-dashboard"></i>
+            <span class="nav-link-text">介绍页</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-wrench"></i>
+            <span class="nav-link-text">图谱查询</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseComponents">
+            <li>
+              <a href="/query_brother_page/">兄弟关系</a>
+            </li>
+            <li>
+              <a href="/query_super_page/">上下级关系</a>
+            </li>
+            <li>
+              <a href="/query_cooperation_page/">合作关系</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+          <a class="nav-link" href="/ner_page/">
+            <i class="fa fa-fw fa-area-chart"></i>
+            <span class="nav-link-text">实体识别</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+          <a class="nav-link" href="/re_page/">
+            <i class="fa fa-fw fa-table"></i>
+            <span class="nav-link-text">关系抽取</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav sidenav-toggler">
+        <li class="nav-item">
+          <a class="nav-link text-center" id="sidenavToggler">
+            <i class="fa fa-fw fa-angle-left"></i>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown" style="color: #ffffff">
+            艾成铭 v1.0
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          实体识别
+        </li>
+      </ol>
+      <!-- Icon Cards-->
+      <div class="row">
+        <div class="col-xl-12 col-sm-24 mb-12">
+            <h1>介绍</h1>
+            <hr>
+            <h4>
+                使用自己训练出来的模型，进行命名实体识别，当前只能识别出人名，地名和组织名。输入案例：诸葛亮和周瑜在赤壁大败曹操。
+            </h4>
+        </div>
+        <div class="col-xl-2 col-sm-4 mb-2">
+
+        </div>
+        <div class="col-xl-6 col-sm-12 mb-6">
+            <br>
+            <div class="form-group">
+                <label style="font-weight: bold;">输入待识别文本</label>
+                <label style="font-weight: bold;color: red;" id="error_info"></label>
+                <textarea class="form-control" rows="6" id="ner_text"></textarea>
+            </div>
+            <button type="button" class="btn btn-outline-dark btn-lg btn-block" id="submit">识别</button>
+            <br/>
+            <div class="form-group">
+                <label style="font-weight: bold;">识别结果</label>
+                <textarea class="form-control" rows="6" id="result_text"></textarea>
+            </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>版权所有 &copy; 艾成铭 2018</small>
+        </div>
+      </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Bootstrap core JavaScript-->
+    <script src="/static/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="/static/js/sb-admin.min.js"></script>
+    <script src="/static/js/jquery-3.3.1.js"></script>
+    <script type="text/javascript">
+                $('#myModal').on('shown.bs.modal', function () {
+                  $('#myInput').trigger('focus')
+                })
+                $(document).ready(function () {
+                    $("#submit").click(function () {
+                        var val_text = $("#ner_text").val();
+                        console.log("1+"+val_text)
+                        if( val_text!=null&&val_text.trim() != '') {
+                            $('#error_info').hide()
+                            console.log("2+"+val_text)
+                            $.ajax({
+                                type: 'POST',
+                                data: {
+                                    text:val_text
+                                },
+                                url: '/ner/',
+                                success: function (data) {
+                                    $("#result_text").html(data)
+                                    console.log("3+"+data)
+                                },
+                                error: function (jqXHR) {
+                                    alert("查询失败")
+                                }
+                            })
+                        }else {
+                            $('#error_info').html('(请输入文本)')
+                            $('#error_info').show()
+                            console.log("2+")
+                        }
+                    });
+                })
+            </script>
+  </div>
+</body>
+
+</html>

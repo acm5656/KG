@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/static/js/jquery-3.3.1.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.ajax({
+                type: 'POST',
+                data:{
+                    text:'我是艾成铭'
+                },
+                url: '/ner/',
+                success: function (data) {
+                    console.log(data)
+                    load_d3(JSON.parse(data))
+                },
+                error: function (jqXHR) {
+                    alert("查询失败")
+                }
+            })
+        })
+    </script>
+</body>
+</html>
